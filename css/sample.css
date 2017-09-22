@@ -1,0 +1,63 @@
+#header{
+	height: 3em;
+	width: 100%;
+	background-color:#2ECC71;
+	font-size: 2em;
+	padding-top: 0.7em;
+	color:#F2F1EF;
+}
+#bodi{
+	height:100%;
+	width: 100%;
+	padding-top: 1em;
+	color: #2ECC71;
+
+}
+
+.glyphicon{
+	font-size: 5em;
+}
+
+
+.container{
+	display: flex;
+	flex-wrap: wrap;
+	margin: auto;
+}
+
+.inner-div{
+	min-width: 200px;
+	height: 200px;
+	float: left;
+	margin: 10px auto 10px auto;
+}
+
+hr{
+	color:#2ECC71 ;
+	background-color:#2ECC71;
+	border-width: 3px;
+}
+/*----------SPECIFIC BUDGET DETAILS------------*/
+
+
+/*---------------NEW BUDGET-------------------*/
+#span1{
+	padding:1em;
+}
+
+#bode{
+	height:52.5em;
+	width: 100%;
+	background-color:#F2F1EF;
+}
+
+#txtbox{
+	min-width: 200px;
+	width: 100%;
+	height: 3em;
+	float: left;
+	margin: 10px auto 10px auto;
+}
+
+
+
