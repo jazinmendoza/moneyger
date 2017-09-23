@@ -1,0 +1,149 @@
+/*--------------------SPECIFIC BUDGET--------------------------------*/
+#wholecontent{
+	height: 100%;
+	width: 100%;
+	background-color:#2ECC71;
+	padding-top: 1em;
+	color: #F2F1EF;
+}
+
+.container2{
+	display: flex;
+	flex-wrap: wrap;
+	margin: auto;
+}
+
+
+
+
+/*--------------------------Website Body---------------------------*/
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#wrapper{
+    overflow-x: hidden;
+}
+/*------------------------------------------------------------------*/
+
+
+
+
+
+/*-----------------------------Top Bar-----------------------------*/
+
+.logo{
+	margin-left: -1.1em;
+	background-color: #191919; 
+	height:5em;
+}
+
+.bbm{
+	padding-top: 1em; 
+	max-height: 100%; 
+	max-width: 100%;
+}
+
+.toplabel{
+	margin-top: 0.6em;
+	margin-left: 8.4em;
+	font-size: 2em;
+	color: #535353;
+	letter-spacing: 0.1px;
+}
+
+.topicons{
+	margin-top: -2.2em;
+	margin-left: 57.5em;
+	font-size: 1.5em;
+	color: #4c4c4c;
+}
+
+.topicons a{
+	text-decoration: none;
+	color: #4c4c4c;
+}
+
+.cog{
+	margin-right: 1em;
+}
+
+/*------------------------------------------------------------------*/
+
+
+
+
+
+/*-----------------------------Side Bar-----------------------------*/
+/*.sidebar{
+	background-color: #232323;
+	height: 100%;
+	padding-top: 1em;
+	padding-left: 2em;
+	position: fixed;
+	top:4em;
+}*/
+
+.sidebarr{
+	height: 100%;
+	width: 100%;
+}
+
+.sidebar-inner {
+    height: 100%;
+}
+
+#name{
+    color: white;
+}
+
+#position{
+	font-size: 0.20em;
+	color: #adadad;
+	margin-top: -0.5em;
+}
+
+#link{
+	text-decoration: none;
+	font-size: 350%;
+}
+
+#link div{
+	padding-top: 1.5em;
+	padding-bottom: 1em;
+	/*margin-left: -1.55em;*/
+	width: 100%;
+	color: #919191;
+
+}
+
+#link:hover div{
+	background-color: #48C974!important;
+	transition: 0.5s;
+	color: white;
+}
+
+.active{
+	background-color: #48C974!important;
+	color: white!important;
+}
+/*------------------------------------------------------------------
+
+
+
+
+
+/*-----------------------------Content------------------------------*/
+.content{
+	background-color: white ;
+	height: 100%;
+	width: 100%;
+	/*padding-top: 7em;*/
+	/*padding-left: 2em;*/
+	/*position: relative;*/
+	/*left: 0.7em;*/
+	/*overflow: auto;*/
+}
