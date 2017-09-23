@@ -17,6 +17,27 @@
 			$res['pic'] = $this->sampleModel->viewImage();
 			$this->load->view('newBudget',$res);
 		}
+		
+		//function to delete selected record from database
+		Public function delete_specific_budget() {		
+			$data = $this->uri->segment(3);
+			$this->DetailModel->deleteBudget($data);
+			$this->index();			
+		}
+
+		//updated budget amount in the database
+		Public function update_budget() {		
+			$data = $this->uri->segment(3);
+			$id = $this->input->post('did');
+			$data = array(
+				'amount_allocated' => $this->input->post('budgetamt'),
+				'note' => $this->input->post('note'),
+			);
+
+			$this->db->set($data);
+			$this->DetailModel->UpdateBudget($id,$data);
+			$this->index();			
+		}
 	}
 
 
