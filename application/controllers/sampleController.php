@@ -25,7 +25,7 @@
 			$this->index();			
 		}
 
-		//updated budget amount in the database
+		//updated specific budget in the database
 		Public function update_budget() {		
 			$data = $this->uri->segment(3);
 			$id = $this->input->post('did');
