@@ -1,0 +1,23 @@
+body{
+	background-color: #FCFCFC;
+}
+.input{
+	border: none;
+	border-bottom: 1px solid;
+	border-color: #49C972;
+	background-color: #FCFCFC;
+	width: 100%;
+	margin-top: -3%;
+}
+label{
+	font-size: 12px;
+}
+::-webkit-input-placeholder {
+   font-size: 13px;
+}
+#submit{
+	margin-top: 2%;
+}
+img{
+	width: 100%;
+}
