@@ -1,53 +1,53 @@
 <?php 
 	class newBudgetController extends CI_Controller{
-		Public function __construct() {
+		public function __construct() {
+			session_start();
 			parent::__construct();
 			$this->load->helper('url');
 			$this->load->database();
-			$this->load->model('newBudgetModel');
-			$this->load->model('sampleModel');
+			$this->load->model('newBudgetModel');	
+			$this->load->model('BudgetModel');
+			$this->load->model('IncomeModel');
 		}
-		Public function insertBudget(){
 
-
+		public function insertBudget(){
+			$total_income = $this->IncomeModel->getIncome($_SESSION['user']);
+			$total_budget = $this->IncomeModel->getTotalBudget($_SESSION['user']);
+			$total_income=$total_income[0]->total_income;
+			$total_budget=$total_budget[0]->total_budget;	
 			if($this->input->post("amount_allocated")>=1){
-				$data = array (
-					'user_id' =>'1',
-					'picId' =>$this->input->post("picId"),
+
+				if(($this->input->post("amount_allocated")+$total_budget) > $total_income){
+					redirect('add_budget/-3');
+				}else if($this->uri->segment(3,0)==0){
+					redirect('add_budget/-2');
+				}else{
+					$data = array (
+					'user_id' =>''.$_SESSION['user'].'',
+					'picId' =>$this->uri->segment(3,0),
 					'budget_name' =>$this->input->post("budget_name"),
 					'amount_allocated'=>$this->input->post("amount_allocated")
 					 );
 				$this->newBudgetModel->insertDetail($data);
+				redirect('monthly_budget');
+				}
 
-
-				$data['budget'] = $this->sampleModel->viewBudget();
-				$this->load->view('sample',$data);
-
-				
 			}else{
-				echo '<script language="javascript">';
-				echo 'alert("Please Enter A Positive Budget")';
-				echo '</script>';
-				$this->load->view('newBudget');
+				redirect('add_budget/-1');
 			}
-		
-			// $icon = $this->input->post("icon");
-			// $budget_name = $this->input->post("budget_name");
-			// $amount_allocated = $this->input->post("amount_allocated");
-			// $status = $this->newBudgetController->insertBudget($icon,$budget_name,$amount_allocated);
-
-			// if($status == true){
-			// 	echo "success!";
-			// }else{
-			// 	echo "yolo";
-			// }
-
-			// $this->load->view('sample');
+			
 		}
 
-		
-	}
 
+		public function addIcon(){
+			$data['pic']=$this->newBudgetModel->getIcons();
+			$this->load->view('AddBudgetIcon', $data);
+		}
 
+		public function getIcon(){
+			$pic_id = $_POST['pic_id'];
+			echo json_encode($this->newBudgetModel->getChosenIcon($pic_id));
+		}
+}
 
-?>
+	?>

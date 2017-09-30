@@ -1,18 +1,18 @@
-<?php 
+<?php 		
+	session_start();
 	class detailController extends CI_Controller{
-		Public function __construct() {
+		public function __construct() {
 			parent::__construct();
 			$this->load->helper('url');
 			$this->load->database();
-			$this->load->model('DetailModel');
+			$this->load->model('DetailModel');			
+			$this->load->model('BudgetModel');
 		}
-		Public function viewDetails(){
-			$data = $this->uri->segment(3);
-			$result = $this->DetailModel->getBudgetDetails($data);
-			$this->load->view('details',$result[0]);			
+		public function viewDetails(){
+			$data = $this->uri->segment(2);
+			$result['details'] = $this->DetailModel->getBudgetDetails($_SESSION['user'], $data);
+			$this->load->view('details',$result);			
 		}
-
-		
 
 	}
 
