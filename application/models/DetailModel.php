@@ -10,11 +10,13 @@ class DetailModel extends CI_Model {
     
     /*  This function checks the data if 
     it is in the database   */
-    public function getBudgetDetails($budget_id)
+    public function getBudgetDetails($user_id, $budget_id)
     {
-        $query = $this->db->query("SELECT * 
-                                   FROM budget 
-                                   WHERE budget_id = '".$budget_id."'");
+        $query =  $this->db->query("SELECT budget_id,user_id,budget_name,amount_allocated,name,pic
+                                 FROM budget 
+                                 JOIN picture ON budget.picId = picture.picId
+                                 WHERE user_id = '".$user_id."'
+                                 AND budget_id='".$budget_id."'");
         return $query->result();
     }
 
@@ -25,7 +27,7 @@ class DetailModel extends CI_Model {
         $query = $this->db->query("DELETE 
                                    FROM budget 
                                    WHERE budget_id = '".$budget_id."'");
-
+        
     }
 
     public function UpdateBudget($budget_id, $data)
