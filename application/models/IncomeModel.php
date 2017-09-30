@@ -14,8 +14,8 @@ class IncomeModel extends CI_Model{
     //total expense, total savings
     public function getSummaryTotal($user_id){
         return $summary = array(
-            $this->getIncome($user_id),
-            $this->getTotalBudget($user_id),
+            $this->totalIncome($user_id),
+            $this->totalBudget($user_id),
             // $this->totalExpenses($user_id),
             // $this->totalSavings($user_id)
         );
@@ -23,16 +23,17 @@ class IncomeModel extends CI_Model{
     
     //queries the total income from the database
     //returns an array of result set
-    public function getIncome($user_id){
-        $query = $this->db->query("SELECT amount_earned as total_income 
+    public function totalIncome($user_id){
+        $query = $this->db->query("SELECT SUM(amount_earned) as total_income 
                                    FROM income 
-                                   WHERE user_id = '".$user_id."'");
+                                   WHERE user_id = '".$user_id."' 
+                                        AND MONTH(income_date) = MONTH(CURRENT_TIMESTAMP)");
     	return $query->result();
     }
 
     //queries the total income from the database
     //returns an array of result set
-    public function getTotalBudget($user_id){
+    public function totalBudget($user_id){
         $query = $this->db->query("SELECT SUM(amount_allocated) as total_budget 
                                    FROM budget 
                                    WHERE user_id = '".$user_id."' 
@@ -42,24 +43,12 @@ class IncomeModel extends CI_Model{
 
     //queries the total income from the database
     //returns an array of result set
-    public function getTotalExpenses($user_id){
+    public function totalExpenses($user_id){
         $query = $this->db->query("SELECT SUM(amount_spent) as total_expenses 
                                    FROM transaction 
                                    WHERE user_id = '".$user_id."' 
                                         AND MONTH(budget_date) = MONTH(CURRENT_TIMESTAMP)");
         return $query->result();
     }
-
-    public function setIncome($user_id, $amount){
-        $query = $this->db->simple_query("UPDATE income
-                                   SET amount_earned= '".$amount."' 
-                                   WHERE user_id= '".$user_id."'");
-
-        if($query){
-            return TRUE;
-        }
-
-    }
 }
-
 ?>

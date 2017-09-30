@@ -14,13 +14,5 @@ class HomeController extends CI_Controller
 		$user_id=$_POST['user_id'];
 		echo json_encode($this->IncomeModel->getSummaryTotal($user_id));
 	}
-
-	public function editIncome(){
-		$amount= $_POST['income'];
-		$user_id=$_POST['user_id'];
-		if($this->IncomeModel->setIncome($user_id, $amount)){
-			echo 'true';
-		}
-	}
 }
 ?>

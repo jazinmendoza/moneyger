@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+
 
 /*
 | -------------------------------------------------------------------------
@@ -49,18 +49,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'LoginController';
+$route['default_controller'] = 'AddLiabilitiesController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-$route['home'] = 'HomeController/home';
-$route['budget_preview/(:any)'] = 'HomeController/showAddExpense';
-$route['add_expense/(:any)'] = 'HomeController/addExpense';
-$route['menu'] = 'HomeController/loadSidebar';
-$route['monthly_budget'] = 'MonthlyBudgetController';
-$route['add_budget'] = 'MonthlyBudgetController/addBudget';
-$route['add_budget/(:any)'] = 'MonthlyBudgetController/addBudget';
-$route['add_icon'] = 'newBudgetController/addIcon';
-$route['details/(:any)'] = 'detailController/viewDetails';
-$route['details/(:any)/(:any)'] = 'detailController/viewDetails';
-$route['delete_budget/(:any)'] = 'MonthlyBudgetController/delete_specific_budget';
-$route['update_budget/(:any)'] = 'MonthlyBudgetController/update_budget';
