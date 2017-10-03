@@ -2,11 +2,11 @@
 <html>
 <head>
 	<title>Moneyger | Add Liability</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css">
 	<style>
 		.container {
 			max-height: 1381px;
-			max-width: 700px;
+			max-width: 600px;
 		}
 		.header {
 			background-color: #49c973;
@@ -15,26 +15,28 @@
 		}
 		h3 {
 			color: white;
-            margin-left: 590px;
+            margin-left: 600px;
             margin-top: 28px;
 		}
 		h5 {
 			margin-left: 565px;
 			margin-top: 25px;
 		}
+		.error {
+			color: red;
+			margin-left: 356px;
+		}
 		input {
-			margin-left: 100px;
-			width: 50%;
+			margin-top: 2px;
+			margin-left: 30px;
 		}
 		button {
-			margin-left: 100px;
+			background-color: #49c973;
+			margin-left: 610px;
+			margin-top: 10px;
 		}
-		.input {
-			width: 500px;
-		}
-		.btn {
-			width: 500px;
-			margin-top: 5px;
+		.form {
+			margin-top: 50px;
 		}
 	</style>
 </head>
@@ -43,24 +45,25 @@
 		<div class="row header">
 			<h3>ADD LIABILITY</h3>
 		</div>
-		<div class="row">
-			<h5>ADDING A NEW LIABILITY</h5>
-		</div>
-		<div class="row">
+		<div class="col-10 form">
+			<?php
+				if(!$error) {
+					echo '<span class="error">Cannot insert or Values are less than 0</span>';
+				}
+			?>
 			<form method="POST" autocomplete="off">
 				<input type="hidden" name="userId" value="1" class="form-control"> <!---- ATE JAZIN! I SESSION LANG ANG VALUE HERE! :) ---->
 				<div class="col-12">
-					<input type="name" name="description" placeholder="Name" class="form-control">
+					<input type="name" name="description" placeholder="Device" class="form-control" required="required">
 				</div>
 				<div class="col-12">
-					<input type="name" name="amount" placeholder="Amount" class="form-control">
+					<input type="name" name="amount" placeholder="Amount" class="form-control" required="required">
 				</div>
 				<div class="col-12">
-					<input type="name" name="percentage" placeholder="Percentage" class="form-control">
+					<input type="name" name="percentage" placeholder="Percentage" class="form-control" required="required">
 				</div>
-				<div>
-					
-					
+				<div class="col-12">
+					<input type="name" name="months" placeholder="Months" class="form-control" required="required">
 				</div>
 				<div class="col-12">
 					<button class="btn btn-success">Submit</button>

@@ -14,22 +14,29 @@ class AddLiabilitiesController extends CI_Controller
 
 	public function index()
 	{
-		if(isset($_POST['userId']) && isset($_POST['description']) && isset($_POST['amount']) && isset($_POST['percentage'])) {
+		if(isset($_POST['userId']) && isset($_POST['description']) && isset($_POST['amount']) && isset($_POST['percentage']) && isset($_POST['months'])) {
 			$userId = $_POST['userId'];
 			$description = $_POST['description'];
 			$amount = $_POST['amount'];
 			$percentage = $_POST['percentage'];
+			$month = $_POST['months'];
 
-			$output = $this->AddLiabilitiesModel->insertData($userId, $description, $amount, $percentage);
-
-			if($output == 1) {
-				$this->load->view('LiabilitiesView');
-			} else {
+			if($month < 0 || $amount < 0 || $percentage < 0) {
 				$checker['error'] = false;
-				$this->load->view('LiabilitiesView', $checker);
+				$this->load->view('AddLiabilitiesView', $checker);
+			} else {
+				$output = $this->AddLiabilitiesModel->insertData($userId, $description, $amount, $percentage, $month);
+
+				if($output == 1) {
+					redirect('LiabilitiesController');
+				} else {
+					$checker['error'] = 'false';
+					$this->load->view('AddLiabilitiesView', $checker);
+				}
 			}
 		} else {
-			$this->load->view('AddLiabilitiesView');
+			$checker['error'] = true;
+			$this->load->view('AddLiabilitiesView', $checker);
 		}
 	}
 }
